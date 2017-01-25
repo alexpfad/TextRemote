@@ -30,9 +30,9 @@
 #include <SoftwareSerial.h>         // used by the shield to communicate with the cellular module
 #include <SFE_MG2639_CellShield.h>  // include the Sparkfun cellular shield library
 
-#define DEBUG       1               // defines the debug variable
+#define DEBUG       0               // defines the debug variable
 
-static char MYCELL[12] = "17034835484";         // sets my cell phone number to a constant char array
+static char MYCELL[12] = "15555555555";         // sets my cell phone number to a constant char array
 static int  LTIME = 100;                        // defines time (in ms) to send the lock signal
 static int  UTIME = 100;                        // defines time (in ms) to send the unlock signal
 static int  STIME = 100;                        // defines time (in ms) to send the signal to start the engine
@@ -102,7 +102,7 @@ void loop() {      // loops continually while connected to power
                         Serial.println("");
                     }
                     else{
-                    sendText(MYCELL, String(LastPhoneNum) + (F(" just contacted the Vehicle SMS Controller with the following text:")));
+                    sendText(MYCELL, String(LastPhoneNum) + (" just contacted the Vehicle SMS Controller with the following text:"));
                     sendText(MYCELL, messageContents);
                     }
                 }
@@ -111,20 +111,20 @@ void loop() {      // loops continually while connected to power
                         Serial.print(F("messageContents[0] = "));
                         Serial.println(messageContents[0]);
                     }
-                    if ('H' == messageContents[0]) {
+                    if ('H' == messageContents[0] || 'h' == messageContents[0]) {
                         if(DEBUG){ Serial.println(F("Available commands are:   HELP, RUN, STOP, LOCK, UNLOCK")); }
                         else{ sendText(MYCELL, (F("Available commands are:   HELP, RUN, STOP, LOCK, UNLOCK"))); }
                     }
-                    else if ('R' == messageContents[0]) {   // Start the engine
+                    else if ('R' == messageContents[0] || 'r' == messageContents[0]) {   // Start the engine
                         startEngine();
                     }
-                    else if ('S' == messageContents[0]) {   // Stop the engine
+                    else if ('S' == messageContents[0] || 's' == messageContents[0]) {   // Stop the engine
                         stopEngine();
                     }
-                    else if ('U' == messageContents[0]) {   // Unlock the vehicle
+                    else if ('U' == messageContents[0] || 'u' == messageContents[0]) {   // Unlock the vehicle
                         unlockVehicle();
                     }
-                    else if ('L' == messageContents[0]) {   // Lock the vehicle
+                    else if ('L' == messageContents[0] || 'l' == messageContents[0]) {   // Lock the vehicle
                         lockVehicle();
                     }
                     else{     // The message text did not begin with one of the above letters.
