@@ -1,6 +1,6 @@
 /******************************************************************************* 
 
- - - Vehicle SMS Controller v0.1 - -
+ - - Vehicle SMS Controller v0.2 - -
 
  Author:      Alex Pfadenhauer
               (pfaden@gmail.com)
@@ -16,7 +16,8 @@
   - Sparkfun MG2639 Cellular Shield
   - OEM Remote Fob for 2014 Toyota Tundra
  
- Revisions:   v0.1 (1/2017)  -   Pre-release, not yet ready. Help, run, stop, unlock, lock
+ Revisions:   v0.2 (1/2017)  -   SMS send & receive now work; SMS commands can be identified & processed.
+              v0.1 (1/2017)  -   Pre-release, not yet ready. Help, run, stop, unlock, lock
 
  List of commands:
     HELP          Lists all of the possible commands
